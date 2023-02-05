@@ -3,11 +3,8 @@ package com.gusparro.projeto_jsf.repositories;
 import com.gusparro.projeto_jsf.configs.PersistenceUnitInitialization;
 import com.gusparro.projeto_jsf.models.DefaultEntity;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.OptimisticLockException;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.lang.reflect.ParameterizedType;
 
 @Getter
 @Setter
