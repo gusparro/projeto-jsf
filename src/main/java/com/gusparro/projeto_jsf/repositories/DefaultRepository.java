@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType;
 
 @Getter
 @Setter
-public class DefaultRepository<T extends DefaultEntity> {
+public abstract class DefaultRepository<T extends DefaultEntity> {
 
     protected EntityManager entityManager;
 
