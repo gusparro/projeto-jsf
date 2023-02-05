@@ -1,7 +1,11 @@
 package com.gusparro.projeto_jsf.repositories;
 
-public class AppUserRepository {
+import com.gusparro.projeto_jsf.models.AppUser;
 
+public class AppUserRepository extends DefaultRepository<AppUser> {
 
+    public AppUser findById(Long id) {
+       return entityManager.find(AppUser.class,  id);
+    }
 
 }
