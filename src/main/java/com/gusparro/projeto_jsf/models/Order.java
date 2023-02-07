@@ -16,7 +16,7 @@ import static jakarta.persistence.EnumType.STRING;
 @Entity
 public class Order extends DefaultEntity {
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "client_id")
     private Client client;
 

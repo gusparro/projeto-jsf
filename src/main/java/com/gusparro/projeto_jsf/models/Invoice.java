@@ -17,7 +17,7 @@ public class Invoice extends DefaultEntity {
 
     private String xml;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "order_id")
     private Order order;
 

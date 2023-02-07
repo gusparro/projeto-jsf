@@ -18,6 +18,7 @@ public class Role extends DefaultEntity {
 
     private String description;
 
+    @ToString.Exclude
     @ManyToMany(mappedBy = "roles")
     private List<AppUser> appUsers;
 

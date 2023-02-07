@@ -1,9 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -29,5 +26,8 @@ public class Product extends DefaultEntity {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
+
+    @OneToOne(mappedBy = "product")
+    private Stock stock;
 
 }

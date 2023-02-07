@@ -1,6 +1,8 @@
 package com.gusparro.projeto_jsf.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 @Getter
@@ -11,7 +13,9 @@ import lombok.*;
 @Entity
 public class Stock extends DefaultEntity {
 
-    private Long productId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     private Long amount;
 

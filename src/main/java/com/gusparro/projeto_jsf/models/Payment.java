@@ -20,7 +20,7 @@ public class Payment extends DefaultEntity {
     @Enumerated(STRING)
     private PaymentStatus status;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "order_id")
     private Order order;
 
