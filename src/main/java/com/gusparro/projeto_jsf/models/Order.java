@@ -14,6 +14,7 @@ import static jakarta.persistence.EnumType.STRING;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "orders")
 public class Order extends DefaultEntity {
 
     @ManyToOne(optional = false)
