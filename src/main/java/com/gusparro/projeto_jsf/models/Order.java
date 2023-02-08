@@ -36,4 +36,26 @@ public class Order extends DefaultEntity {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
+    public void calculateTotalAmount() {
+        if (!orderItems.isEmpty()) {
+            total = orderItems.stream()
+                    .map(item -> item.getProductPrice().multiply(new BigDecimal(item.getAmount())))
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
+
+    // TODO
+    // Verifcar se funciona.
+    @Override
+    public void beforePersist() {
+        super.beforePersist();
+        calculateTotalAmount();
+    }
+
+    @Override
+    public void beforeUpdate() {
+        super.beforeUpdate();
+        calculateTotalAmount();
+    }
+
 }
