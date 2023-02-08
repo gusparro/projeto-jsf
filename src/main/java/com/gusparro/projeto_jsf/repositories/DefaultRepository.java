@@ -28,8 +28,8 @@ public abstract class DefaultRepository<T extends DefaultEntity> {
 
     public void remove(T entity) throws Exception {
         try {
-            T t = entityManager.merge(entity);
-            entityManager.remove(t);
+            entity = save(entity);
+            entityManager.remove(entity);
         } catch (Exception e) {
             e.printStackTrace();
 

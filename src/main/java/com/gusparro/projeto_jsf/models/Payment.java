@@ -1,6 +1,9 @@
 package com.gusparro.projeto_jsf.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 import static jakarta.persistence.EnumType.STRING;

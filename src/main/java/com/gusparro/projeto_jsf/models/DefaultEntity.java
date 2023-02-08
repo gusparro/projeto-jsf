@@ -1,8 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
@@ -16,16 +14,28 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Getter
 @Setter
 @MappedSuperclass
-public class DefaultEntity {
+public abstract class DefaultEntity {
 
     @Include
     @Id
     @GeneratedValue(strategy = IDENTITY)
     protected Long id;
 
+    @Column(updatable = false)
     protected LocalDateTime createdAt;
 
+    @Column(insertable = false)
     protected LocalDateTime updatedAt;
+
+    @PrePersist
+    public void beforePersist() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void beforeUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
     @Override
     public boolean equals(Object o) {
