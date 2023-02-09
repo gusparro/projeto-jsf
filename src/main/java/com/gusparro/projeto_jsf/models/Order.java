@@ -37,15 +37,13 @@ public class Order extends DefaultEntity {
     private List<OrderItem> orderItems;
 
     public void calculateTotalAmount() {
-        if (!orderItems.isEmpty()) {
+        if (orderItems != null) {
             total = orderItems.stream()
                     .map(item -> item.getProductPrice().multiply(new BigDecimal(item.getAmount())))
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
         }
     }
-
-    // TODO
-    // Verifcar se funciona.
+    
     @Override
     public void beforePersist() {
         super.beforePersist();

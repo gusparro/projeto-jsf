@@ -23,8 +23,8 @@ public class AppUser extends DefaultEntity {
 
     @ToString.Exclude
     @ManyToMany(fetch = EAGER)
-    @JoinTable(name = "app_user_role",
-            joinColumns = @JoinColumn(name = "app_user_id"),
+    @JoinTable(name = "appuser_role",
+            joinColumns = @JoinColumn(name = "appuser_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
