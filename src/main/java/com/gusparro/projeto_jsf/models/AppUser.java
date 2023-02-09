@@ -17,6 +17,7 @@ public class AppUser extends DefaultEntity {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     private String password;

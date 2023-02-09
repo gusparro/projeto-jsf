@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 public class Category extends DefaultEntity {
 
+    @Column(unique = true)
     private String name;
 
     @ManyToOne
@@ -23,6 +24,7 @@ public class Category extends DefaultEntity {
     @OneToMany(mappedBy = "parentCategory")
     private List<Category> categories;
 
+    @ToString.Exclude
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
 

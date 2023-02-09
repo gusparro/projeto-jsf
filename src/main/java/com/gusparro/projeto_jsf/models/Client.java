@@ -1,5 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
@@ -19,8 +20,10 @@ public class Client extends DefaultEntity {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
     private String cpf;
 
     @Enumerated(STRING)
