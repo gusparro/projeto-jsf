@@ -1,5 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
 @Entity
 public class OrderItem extends DefaultEntity {
 
+    @Column(name = "product_price")
     private BigDecimal productPrice;
 
     private Long amount;

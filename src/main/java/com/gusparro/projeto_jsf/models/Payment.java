@@ -1,9 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import static jakarta.persistence.EnumType.STRING;
@@ -16,6 +13,7 @@ import static jakarta.persistence.EnumType.STRING;
 @Entity
 public class Payment extends DefaultEntity {
 
+    @Column(name = "card_number")
     private String cardNumber;
 
     private String barcode;

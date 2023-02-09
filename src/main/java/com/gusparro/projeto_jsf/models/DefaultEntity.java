@@ -21,10 +21,10 @@ public abstract class DefaultEntity {
     @GeneratedValue(strategy = IDENTITY)
     protected Long id;
 
-    @Column(updatable = false)
+    @Column(name = "created_at", updatable = false)
     protected LocalDateTime createdAt;
 
-    @Column(insertable = false)
+    @Column(name = "updated_at", insertable = false)
     protected LocalDateTime updatedAt;
 
     @PrePersist
