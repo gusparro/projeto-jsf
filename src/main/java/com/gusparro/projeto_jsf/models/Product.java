@@ -6,6 +6,8 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.ALL;
+
 @Getter
 @Setter
 @ToString
@@ -27,7 +29,7 @@ public class Product extends DefaultEntity {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 
-    @OneToOne(mappedBy = "product")
+    @OneToOne(mappedBy = "product", cascade = ALL)
     private Stock stock;
 
 }

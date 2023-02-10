@@ -13,10 +13,10 @@ import lombok.*;
 @Entity
 public class Stock extends DefaultEntity {
 
+    private Long amount;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "product_id")
     private Product product;
-
-    private Long amount;
 
 }
