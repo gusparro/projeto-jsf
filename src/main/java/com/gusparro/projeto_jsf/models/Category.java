@@ -21,7 +21,7 @@ public class Category extends DefaultEntity {
     private Category parentCategory;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "parentCategory")
+    @OneToMany(mappedBy = "parentCategory", orphanRemoval = true)
     private List<Category> categories;
 
     @ToString.Exclude

@@ -29,7 +29,7 @@ public class Product extends DefaultEntity {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 
-    @OneToOne(mappedBy = "product", cascade = ALL)
+    @OneToOne(mappedBy = "product", cascade = ALL, orphanRemoval = true)
     private Stock stock;
 
 }

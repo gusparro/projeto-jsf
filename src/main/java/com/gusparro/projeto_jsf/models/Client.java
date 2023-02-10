@@ -30,7 +30,7 @@ public class Client extends DefaultEntity {
     private Gender gender;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", orphanRemoval = true)
     private List<Order> orders;
 
 }

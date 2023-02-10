@@ -15,7 +15,7 @@ public class Stock extends DefaultEntity {
 
     private Long amount;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, orphanRemoval = true)
     @JoinColumn(name = "product_id")
     private Product product;
 

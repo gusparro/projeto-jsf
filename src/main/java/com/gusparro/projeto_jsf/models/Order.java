@@ -27,14 +27,14 @@ public class Order extends DefaultEntity {
     @Enumerated(STRING)
     private OrderStatus status;
 
-    @OneToOne(mappedBy = "order")
+    @OneToOne(mappedBy = "order", orphanRemoval = true)
     private Invoice invoice;
 
-    @OneToOne(mappedBy = "order")
+    @OneToOne(mappedBy = "order", orphanRemoval = true)
     private Payment payment;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "order", cascade = ALL)
+    @OneToMany(mappedBy = "order", cascade = ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
 
     public void calculateTotalAmount() {

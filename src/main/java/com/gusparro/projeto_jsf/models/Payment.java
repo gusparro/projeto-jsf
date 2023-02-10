@@ -21,7 +21,7 @@ public class Payment extends DefaultEntity {
     @Enumerated(STRING)
     private PaymentStatus status;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, orphanRemoval = true)
     @JoinColumn(name = "order_id")
     private Order order;
 

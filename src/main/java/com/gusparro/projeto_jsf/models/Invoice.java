@@ -17,7 +17,7 @@ public class Invoice extends DefaultEntity {
     @Lob
     private byte[] xml;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, orphanRemoval = true)
     @JoinColumn(name = "order_id")
     private Order order;
 
