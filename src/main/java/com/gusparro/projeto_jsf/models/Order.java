@@ -6,6 +6,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.EnumType.STRING;
 
 @Getter
@@ -33,7 +34,7 @@ public class Order extends DefaultEntity {
     private Payment payment;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = ALL)
     private List<OrderItem> orderItems;
 
     public void calculateTotalAmount() {
