@@ -5,7 +5,6 @@ import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.repositories.jpql.AppUserRepositoryJPQL;
 
 import java.util.List;
-import java.util.Optional;
 
 public class AppUserServiceJPQL {
 
@@ -15,13 +14,13 @@ public class AppUserServiceJPQL {
         repository = new AppUserRepositoryJPQL();
     }
 
-    public Optional<AppUser> save(AppUser entity) throws ServiceException {
+    public AppUser save(AppUser entity) throws ServiceException {
         try {
             repository.beginTransaction();
             entity = repository.save(entity);
             repository.commitTransaction();
 
-            return Optional.of(entity);
+            return entity;
         } catch (Exception exception) {
             exception.printStackTrace();
 
