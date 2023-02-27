@@ -19,7 +19,7 @@
         <div class="card">
             <h:form styleClass="formgrid grid">
                 <div class="field col-12 mt-2">
-                    <h:outputLabel for="name" styleClass="block">Name:</h:outputLabel>
+                    <h:outputLabel for="name" styleClass="block" value="Name:"/>
                     <h:inputText id="name"
                                  value="#{newUserController.appUser.name}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="field col-12 mt-2">
-                    <h:outputLabel for="email" styleClass="block">E-mail:</h:outputLabel>
+                    <h:outputLabel for="email" styleClass="block" value="E-mail:"/>
                     <h:inputText id="email"
                                  value="#{newUserController.appUser.email}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="field col-12 mt-2">
-                    <h:outputLabel for="password" styleClass="block">Password:</h:outputLabel>
+                    <h:outputLabel for="password" styleClass="block" value="Password:"/>
                     <h:inputSecret id="password"
                                    value="#{newUserController.appUser.password}"
                                    feedback="true"
