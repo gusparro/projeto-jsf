@@ -10,50 +10,45 @@
 
     <h:outputStylesheet library="webjars" name="primeflex/3.2.0/primeflex.min.css"/>
 </h:head>
-<h:body style=" box-sizing: border-box; margin: 0; padding: 0; ">
-    <h:form style=" min-width: 100vw;  min-height: 100vh"
-            styleClass="flex justify-content-center align-content-center flex-wrap">
-        <p:card style=" width: 30em; " styleClass="shadow-7">
-            <f:facet name="title">
-                Sign Up
-            </f:facet>
+<h:body style=" box-sizing: border-box; margin: 0; padding: 0; min-width: 100vw;  min-height: 100vh"
+        styleClass="flex justify-content-center align-content-center flex-wrap">
 
-            <div class="card">
-                <div class="formgrid grid">
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="name" styleClass="block">Name:</p:outputLabel>
-                        <p:inputText id="name"
-                                     value="#{newUserController.appUser.name}"
-                                     styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+    <div style=" width: 30em; " class="shadow-7 py-8 px-6">
+        <h2>Sign Up</h2>
+
+        <div class="card">
+            <h:form styleClass="formgrid grid">
+                <div class="field col-12 mt-2">
+                    <h:outputLabel for="name" styleClass="block">Name:</h:outputLabel>
+                    <h:inputText id="name"
+                                 value="#{newUserController.appUser.name}"
+                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                  surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                    </div>
-
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="email" styleClass="block">E-mail:</p:outputLabel>
-                        <p:inputText id="email"
-                                     value="#{newUserController.appUser.email}"
-                                     styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
-                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                    </div>
-
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="password" styleClass="block">Password:</p:outputLabel>
-                        <p:password id="password"
-                                    value="#{newUserController.appUser.name}"
-                                    feedback="true"
-                                    inline="true"
-                                    styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
-                                surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                    </div>
                 </div>
-            </div>
 
-            <f:facet name="footer">
-                <p:commandButton icon="pi pi-user-plus" value="Save" action="#{newUserController.save()}"/>
-                <p:commandButton icon="pi pi-times" value="Cancel" styleClass="ui-button-danger"
-                                 style=" margin-left: .5em "/>
-            </f:facet>
-        </p:card>
-    </h:form>
+                <div class="field col-12 mt-2">
+                    <h:outputLabel for="email" styleClass="block">E-mail:</h:outputLabel>
+                    <h:inputText id="email"
+                                 value="#{newUserController.appUser.email}"
+                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                </div>
+
+                <div class="field col-12 mt-2">
+                    <h:outputLabel for="password" styleClass="block">Password:</h:outputLabel>
+                    <h:inputSecret id="password"
+                                   value="#{newUserController.appUser.password}"
+                                   feedback="true"
+                                   inline="true"
+                                   styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+                                surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                </div>
+
+                <h:commandButton value="Save" action="#{newUserController.save()}" ajax="false"/>
+                <h:commandButton value="Cancel" styleClass="ui-button-danger"/>
+            </h:form>
+        </div>
+    </div>
+
 </h:body>
 </html>

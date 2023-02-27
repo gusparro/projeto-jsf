@@ -3,7 +3,21 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-    <persistence-unit name="default">
+    <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Domain Entities -->
+        <class>com.gusparro.projeto_jsf.models.AppUser</class>
+        <class>com.gusparro.projeto_jsf.models.Category</class>
+        <class>com.gusparro.projeto_jsf.models.Client</class>
+        <class>com.gusparro.projeto_jsf.models.Invoice</class>
+        <class>com.gusparro.projeto_jsf.models.Order</class>
+        <class>com.gusparro.projeto_jsf.models.OrderItem</class>
+        <class>com.gusparro.projeto_jsf.models.Payment</class>
+        <class>com.gusparro.projeto_jsf.models.Product</class>
+        <class>com.gusparro.projeto_jsf.models.Role</class>
+        <class>com.gusparro.projeto_jsf.models.Stock</class>
+
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/projeto-jsf"/>

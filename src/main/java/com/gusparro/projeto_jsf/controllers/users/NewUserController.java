@@ -5,8 +5,10 @@ import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.services.jpql.AppUserServiceJPQL;
 import jakarta.enterprise.inject.Model;
 
+import java.io.Serializable;
+
 @Model
-public class NewUserController {
+public class NewUserController implements Serializable {
 
     private final AppUserServiceJPQL appUserServiceJPQL;
 
@@ -29,8 +31,11 @@ public class NewUserController {
     }
 
     public String save() {
+        System.out.println("Dentro do metodo");
         try {
+            System.out.println("Antes do save");
             appUser = appUserServiceJPQL.save(appUser);
+            System.out.println("Depois do save");
         } catch (ServiceException exception) {
             exception.printStackTrace();
         }
