@@ -23,7 +23,9 @@
                     <h:inputText id="name"
                                  value="#{newUserController.appUser.name}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
-                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                                 surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <f:passThroughAttribute name="placeholder" value="Inform your full name"/>
+                    </h:inputText>
                 </div>
 
                 <div class="field col-12 mt-2">
@@ -31,7 +33,9 @@
                     <h:inputText id="email"
                                  value="#{newUserController.appUser.email}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
-                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                                 surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <f:passThroughAttribute name="placeholder" value="example@email.com"/>
+                    </h:inputText>
                 </div>
 
                 <div class="field col-12 mt-2">
@@ -44,8 +48,10 @@
                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                 </div>
 
-                <h:commandButton value="Save" action="#{newUserController.save()}" ajax="false"/>
-                <h:commandButton value="Cancel" styleClass="ui-button-danger"/>
+                <div class="field col-12">
+                    <h:commandButton value="Save" action="#{newUserController.save()}"/>
+                    <h:commandButton value="Cancel" styleClass="ui-button-danger ml-2"/>
+                </div>
             </h:form>
         </div>
     </div>
