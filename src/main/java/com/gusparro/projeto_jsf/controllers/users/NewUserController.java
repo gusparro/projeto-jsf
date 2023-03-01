@@ -31,11 +31,8 @@ public class NewUserController implements Serializable {
     }
 
     public String save() {
-        System.out.println("Dentro do metodo");
         try {
-            System.out.println("Antes do save");
             appUser = appUserServiceJPQL.save(appUser);
-            System.out.println("Depois do save");
         } catch (ServiceException exception) {
             exception.printStackTrace();
         }
