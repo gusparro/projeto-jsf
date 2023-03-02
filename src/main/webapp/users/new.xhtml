@@ -11,11 +11,13 @@
     </ui:define>
 
     <ui:define name="content">
-        <div style=" width: 30em; " class="shadow-7 py-8 px-6 bg-blue-700 text-white">
+        <div style=" width: 25em; " class="shadow-7 py-8 px-6 bg-blue-700 text-white">
             <h2 class="mb-5 text-center">Sign Up</h2>
 
             <div class="card">
                 <h:form id="appuser_form" styleClass="formgrid grid">
+                    <p:growl id="growl" showDetail="true"/>
+
                     <div class="field col-12 mt-2">
                         <p:outputLabel for="name" styleClass="block" value="Name:"/>
                         <p:inputText id="name"
@@ -49,9 +51,13 @@
                         <p:message for="password"/>
                     </div>
 
-                    <div class="field col-12">
-                        <h:commandButton value="Save" action="#{newUserController.save()}"/>
-                        <h:commandButton value="Cancel" type="reset" styleClass="ml-2"/>
+                    <div class="field col-12 flex justify-content-between gap-3">
+                        <p:commandButton type="button" value="Submit" icon="pi pi-check" process="@form"
+                                         update="growl"
+                                         styleClass="col ui-button-raised ui-button-success"
+                                         action="#{newUserController.save()}"/>
+                        <p:commandButton type="reset" value="Cancel"
+                                         styleClass="col ui-button-raised ui-button-danger"/>
                     </div>
                 </h:form>
             </div>
