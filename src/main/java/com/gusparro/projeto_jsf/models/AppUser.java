@@ -1,5 +1,6 @@
 package com.gusparro.projeto_jsf.models;
 
+import com.gusparro.projeto_jsf.configs.utils.PasswordHasher;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -38,5 +39,17 @@ public class AppUser extends DefaultEntity {
             joinColumns = @JoinColumn(name = "appuser_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+
+    @Override
+    public void beforePersist() {
+        super.beforePersist();
+        password = PasswordHasher.hashPassword(password);
+    }
+
+    @Override
+    public void beforeUpdate() {
+        super.beforeUpdate();
+        password = PasswordHasher.hashPassword(password);
+    }
 
 }

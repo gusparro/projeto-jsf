@@ -1,4 +1,4 @@
-package com.gusparro.projeto_jsf.configs;
+package com.gusparro.projeto_jsf.configs.utils;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

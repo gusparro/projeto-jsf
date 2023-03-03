@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -11,57 +10,52 @@
     </ui:define>
 
     <ui:define name="content">
-        <div style=" width: 25em; " class="shadow-7 py-8 px-6 bg-blue-700 text-white">
+        <p:card style=" width: 25em " styleClass="shadow-7 py-8 px-4 bg-blue-700 text-white">
             <h2 class="mb-5 text-center">Sign Up</h2>
 
-            <div class="card">
-                <h:form id="appuser_form" styleClass="formgrid grid">
-                    <p:growl id="growl" showDetail="true"/>
+            <h:form id="appuser_form" styleClass="formgrid grid">
+                <p:growl id="growl" showDetail="true"/>
 
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="name" styleClass="block" value="Name:"/>
-                        <p:inputText id="name"
-                                     value="#{newUserController.appUser.name}"
-                                     styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+                <div class="field col-12 mt-2">
+                    <p:outputLabel for="name" styleClass="block" value="Name:"/>
+                    <p:inputText id="name"
+                                 value="#{newUserController.appUser.name}"
+                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                  surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                            <f:passThroughAttribute name="placeholder" value="Inform your full name"/>
-                        </p:inputText>
-                        <p:message for="name"/>
-                    </div>
+                        <f:passThroughAttribute name="placeholder" value="Inform your full name"/>
+                    </p:inputText>
+                </div>
 
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="email" styleClass="block" value="E-mail:"/>
-                        <p:inputText id="email"
-                                     value="#{newUserController.appUser.email}"
-                                     styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+                <div class="field col-12 mt-2">
+                    <p:outputLabel for="email" styleClass="block" value="E-mail:"/>
+                    <p:inputText id="email"
+                                 value="#{newUserController.appUser.email}"
+                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                  surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                            <f:passThroughAttribute name="placeholder" value="example@email.com"/>
-                        </p:inputText>
-                        <p:message for="email"/>
-                    </div>
+                        <f:passThroughAttribute name="placeholder" value="example@email.com"/>
+                    </p:inputText>
+                </div>
 
-                    <div class="field col-12 mt-2">
-                        <p:outputLabel for="password" styleClass="block" value="Password:"/>
-                        <p:password id="password"
-                                    value="#{newUserController.appUser.password}"
-                                    feedback="true"
-                                    inline="true"
-                                    styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
+                <div class="field col-12 mt-2">
+                    <p:outputLabel for="password" styleClass="block" value="Password:"/>
+                    <p:password id="password"
+                                value="#{newUserController.appUser.password}"
+                                feedback="true"
+                                inline="true"
+                                styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                        <p:message for="password"/>
-                    </div>
+                </div>
 
-                    <div class="field col-12 flex justify-content-between gap-3">
-                        <p:commandButton type="button" value="Submit" icon="pi pi-check" process="@form"
-                                         update="growl"
-                                         styleClass="col ui-button-raised ui-button-success"
-                                         action="#{newUserController.save()}"/>
-                        <p:commandButton type="reset" value="Cancel"
-                                         styleClass="col ui-button-raised ui-button-danger"/>
-                    </div>
-                </h:form>
-            </div>
-        </div>
+                <div class="field col-12 flex justify-content-between gap-3">
+                    <p:commandButton value="Submit" icon="pi pi-check"
+                                     styleClass="col ui-button-raised ui-button-success"
+                                     process="@form" update="@form"
+                                     action="#{newUserController.save()}"/>
+                    <p:commandButton type="reset" value="Cancel"
+                                     styleClass="col ui-button-raised ui-button-danger"/>
+                </div>
+            </h:form>
+        </p:card>
     </ui:define>
 
     <ui:define name="scripts">

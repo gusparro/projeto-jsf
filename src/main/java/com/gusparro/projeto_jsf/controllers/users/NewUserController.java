@@ -37,7 +37,7 @@ public class NewUserController implements Serializable {
             exception.printStackTrace();
         }
 
-        return "";
+        return "/home/index.xhtml?faces-redirect=true";
     }
 
 }

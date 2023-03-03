@@ -1,4 +1,4 @@
-INSERT INTO appuser (name, email, password, created_at) VALUES ('Gustavo Parro', 'parrogustavo@gmail.com', '123456', now());
+INSERT INTO appuser (name, email, password, created_at) VALUES ('Gustavo Parro', 'parrogustavo@gmail.com', 'vyUJvSGDB8WloocH4L6xBT+NsWeyt/moQy2bgL4gOzPOhTilSLu97MvMYcJ9+3cs', now());
 
 INSERT INTO role (name, description, created_at) VALUES ('Admin', 'Person who is in charge of the operation of the website.', now());
 INSERT INTO role (name, description, created_at) VALUES ('Manager', 'A person responsible for controlling  all or part of the website.', now());

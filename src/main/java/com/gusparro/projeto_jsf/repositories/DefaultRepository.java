@@ -1,6 +1,6 @@
 package com.gusparro.projeto_jsf.repositories;
 
-import com.gusparro.projeto_jsf.configs.PersistenceUnitInitialization;
+import com.gusparro.projeto_jsf.configs.utils.PersistenceUnitInitialization;
 import com.gusparro.projeto_jsf.configs.exceptions.RepositoryException;
 import com.gusparro.projeto_jsf.models.DefaultEntity;
 import jakarta.persistence.EntityManager;
