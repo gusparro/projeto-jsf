@@ -3,16 +3,18 @@ package com.gusparro.projeto_jsf.services.jpql;
 import com.gusparro.projeto_jsf.configs.exceptions.ServiceException;
 import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.repositories.jpql.AppUserRepositoryJPQL;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import java.util.List;
 
+@Named
+@ApplicationScoped
 public class AppUserServiceJPQL {
 
-    private final AppUserRepositoryJPQL repository;
-
-    public AppUserServiceJPQL() {
-        repository = new AppUserRepositoryJPQL();
-    }
+    @Inject
+    private AppUserRepositoryJPQL repository;
 
     public AppUser save(AppUser entity) throws ServiceException {
         try {

@@ -2,11 +2,15 @@ package com.gusparro.projeto_jsf.repositories.jpql;
 
 import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.repositories.DefaultRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.Optional;
 
+@Named
+@ApplicationScoped
 public class AppUserRepositoryJPQL extends DefaultRepository<AppUser> {
 
     private String jpql;
