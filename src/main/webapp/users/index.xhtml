@@ -75,14 +75,13 @@
                                 <p:resetInput target=":dialogs:manage-user-content"/>
                             </p:commandButton>
 
-                            <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash"
+                            <p:commandButton class="ui-button-danger rounded-button" icon="pi pi-trash"
                                              process="@this"
                                              oncomplete="PF('deleteUserDialog').show()">
                                 <f:setPropertyActionListener value="#{user}" target="#{usersController.selectedUser}"/>
                             </p:commandButton>
                         </div>
                     </p:column>
-
                 </p:dataTable>
             </h:form>
 

@@ -1,6 +1,7 @@
 package com.gusparro.projeto_jsf.controllers.users;
 
 import com.gusparro.projeto_jsf.configs.exceptions.ServiceException;
+import com.gusparro.projeto_jsf.configs.utils.MessagesFactory;
 import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.services.jpql.AppUserServiceJPQL;
 import jakarta.annotation.PostConstruct;
@@ -52,12 +53,12 @@ public class UsersController implements Serializable {
             try {
                 this.selectedUser = appUserServiceJPQL.save(selectedUser);
             } catch (ServiceException e) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User Failed"));
+                MessagesFactory.addErrorMessage("User Failed");
             }
             this.users.add(this.selectedUser);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User Added"));
+            MessagesFactory.addInfoMessage("User Created");
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User Updated"));
+            MessagesFactory.addInfoMessage("User Updated");
         }
 
         PrimeFaces.current().executeScript("PF('manageUserDialog').hide()");
@@ -70,7 +71,7 @@ public class UsersController implements Serializable {
         this.users.remove(this.selectedUsers);
         this.selectedUsers.remove(this.selectedUser);
         this.selectedUser = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("User Removed"));
+        MessagesFactory.addInfoMessage("User Removed");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
     }
 
@@ -92,7 +93,8 @@ public class UsersController implements Serializable {
         // Implementar a logica
         this.users.removeAll(this.selectedUsers);
         this.selectedUsers = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Users Removed"));
+
+        MessagesFactory.addInfoMessage("Users Removed");
         PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
         PrimeFaces.current().executeScript("PF('dtUsers').clearFilters()");
     }
