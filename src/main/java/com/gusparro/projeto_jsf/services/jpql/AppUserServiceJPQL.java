@@ -45,6 +45,12 @@ public class AppUserServiceJPQL {
             throw new ServiceException(exception.getMessage());
         }
     }
+    
+    public void removeList(List<AppUser> entities) throws ServiceException {
+        for (AppUser user: entities) {
+            remove(user);
+        }
+    }
 
     public AppUser findById(Long id) throws ServiceException {
         return repository.findById(id).orElseThrow(() -> new ServiceException("User not found - " + id));

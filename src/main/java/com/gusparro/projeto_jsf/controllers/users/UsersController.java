@@ -47,17 +47,26 @@ public class UsersController implements Serializable {
     }
 
     public void saveUser() {
-        // TODO
-        // Implementar a logica
         if (this.selectedUser.getId() == null) {
             try {
                 this.selectedUser = appUserServiceJPQL.save(selectedUser);
             } catch (ServiceException e) {
+                e.printStackTrace();
+
                 MessagesFactory.addErrorMessage("User Failed");
             }
             this.users.add(this.selectedUser);
+
             MessagesFactory.addInfoMessage("User Created");
         } else {
+            try {
+                this.selectedUser = appUserServiceJPQL.save(selectedUser);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+
+                MessagesFactory.addErrorMessage("User Failed");
+            }
+
             MessagesFactory.addInfoMessage("User Updated");
         }
 
@@ -66,13 +75,42 @@ public class UsersController implements Serializable {
     }
 
     public void deleteUser() {
-        // TODO
-        // Implementar a logica
-        this.users.remove(this.selectedUsers);
-        this.selectedUsers.remove(this.selectedUser);
-        this.selectedUser = null;
-        MessagesFactory.addInfoMessage("User Removed");
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
+        try {
+            appUserServiceJPQL.remove(this.selectedUser);
+
+            this.users.remove(this.selectedUser);
+            this.selectedUser = null;
+
+            MessagesFactory.addInfoMessage("User Removed");
+            PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
+        } catch (ServiceException e) {
+            e.printStackTrace();
+
+            MessagesFactory.addErrorMessage("User could not be removed.");
+        }
+    }
+
+    public void deleteSelectedUsers() {
+        try {
+            appUserServiceJPQL.removeList(this.selectedUsers);
+
+            // TODO
+            // Ao remover a lista selectedUsers da lista users a tabela fica em branco, verificar isso.
+            this.users.removeAll(this.selectedUsers);
+            this.selectedUsers = null;
+
+            MessagesFactory.addInfoMessage("Users Removed");
+            PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
+            PrimeFaces.current().executeScript("PF('dtUsers').clearFilters()");
+        } catch (ServiceException e) {
+            e.printStackTrace();
+
+            MessagesFactory.addErrorMessage("Users could not be removed.");
+        }
+    }
+
+    public boolean hasSelectedUsers() {
+        return this.selectedUsers != null && !this.selectedUsers.isEmpty();
     }
 
     public String getDeleteButtonMessage() {
@@ -82,21 +120,6 @@ public class UsersController implements Serializable {
         }
 
         return "Delete";
-    }
-
-    public boolean hasSelectedUsers() {
-        return this.selectedUsers != null && !this.selectedUsers.isEmpty();
-    }
-
-    public void deleteSelectedUsers() {
-        // TODO
-        // Implementar a logica
-        this.users.removeAll(this.selectedUsers);
-        this.selectedUsers = null;
-
-        MessagesFactory.addInfoMessage("Users Removed");
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
-        PrimeFaces.current().executeScript("PF('dtUsers').clearFilters()");
     }
 
 }
