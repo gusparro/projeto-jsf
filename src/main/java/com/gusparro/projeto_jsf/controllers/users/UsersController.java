@@ -5,6 +5,7 @@ import com.gusparro.projeto_jsf.configs.utils.MessagesFactory;
 import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.services.jpql.AppUserServiceJPQL;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -100,6 +101,13 @@ public class UsersController implements Serializable {
 
             MessagesFactory.addErrorMessage("Users could not be removed.");
         }
+    }
+
+    public void searchUsers() {
+        String searchQuery = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("value");
+        users = appUserServiceJPQL.findAllByName(searchQuery);
+
+        PrimeFaces.current().ajax().update("form:dt-users");
     }
 
     public boolean hasSelectedUsers() {

@@ -10,11 +10,26 @@
     <title>Projeto JSF</title>
 
     <h:outputStylesheet library="webjars" name="primeflex/3.2.0/primeflex.min.css"/>
-    <h:outputStylesheet library="css" name="/application.css" />
+    <h:outputStylesheet library="css" name="/application.css"/>
 
     <ui:insert name="stylesheets"/>
 </h:head>
 <h:body>
+    <div class="card">
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Home" icon="pi pi-fw pi-home" outcome="/home/index"/>
+                <p:menuitem value="Users" icon="pi pi-fw pi-users" outcome="/users/index"/>
+
+                <p:submenu label="Profile" icon="pi pi-fw pi-user">
+                    <p:menuitem value="Edit" icon="pi pi-fw pi-user-edit"/>
+                    <p:divider/>
+                    <p:menuitem value="Sign Out" icon="pi pi-fw pi-sign-out"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+    </div>
+
     <ui:insert name="content"/>
 
     <ui:insert name="scripts"/>

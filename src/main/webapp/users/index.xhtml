@@ -41,7 +41,7 @@
                             <span style="font-weight: bold">Users</span>
                             <span class="filter-container ui-input-icon-left">
                                 <i class="pi pi-search"/>
-                                <p:inputText id="globalFilter" onkeyup="PF('dtUsers').filter()" placeholder="Search"/>
+                                <p:inputText id="globalFilter" widgetVar="searchInput" placeholder="Search"/>
                             </span>
                         </div>
                     </f:facet>
@@ -132,6 +132,19 @@
     </ui:define>
 
     <ui:define name="scripts">
-
+        <!-- TODO -->
+        <script type="text/javascript">
+            $(function () {
+                PF('searchInput').jq.on('keyup', function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "#{usersController.searchUsers}",
+                        data: {
+                            value: PF('searchInput').getValue()
+                        }
+                    });
+                });
+            });
+        </script>
     </ui:define>
 </ui:composition>
