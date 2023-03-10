@@ -5,9 +5,6 @@ import com.gusparro.projeto_jsf.configs.utils.MessagesFactory;
 import com.gusparro.projeto_jsf.models.AppUser;
 import com.gusparro.projeto_jsf.services.jpql.AppUserServiceJPQL;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.inject.Model;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -43,24 +40,25 @@ public class UsersController implements Serializable {
     }
 
     public void openNew() {
-        this.selectedUser = new AppUser();
+        selectedUser = new AppUser();
     }
 
     public void saveUser() {
-        if (this.selectedUser.getId() == null) {
+        if (selectedUser.getId() == null) {
             try {
-                this.selectedUser = appUserServiceJPQL.save(selectedUser);
+                selectedUser = appUserServiceJPQL.save(selectedUser);
             } catch (ServiceException e) {
                 e.printStackTrace();
 
                 MessagesFactory.addErrorMessage("User Failed");
             }
-            this.users.add(this.selectedUser);
+
+            users.add(selectedUser);
 
             MessagesFactory.addInfoMessage("User Created");
         } else {
             try {
-                this.selectedUser = appUserServiceJPQL.save(selectedUser);
+                selectedUser = appUserServiceJPQL.save(selectedUser);
             } catch (ServiceException e) {
                 e.printStackTrace();
 
@@ -76,10 +74,9 @@ public class UsersController implements Serializable {
 
     public void deleteUser() {
         try {
-            appUserServiceJPQL.remove(this.selectedUser);
-
-            this.users.remove(this.selectedUser);
-            this.selectedUser = null;
+            appUserServiceJPQL.remove(selectedUser);
+            users = appUserServiceJPQL.findAll();
+            selectedUser = null;
 
             MessagesFactory.addInfoMessage("User Removed");
             PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
@@ -92,16 +89,12 @@ public class UsersController implements Serializable {
 
     public void deleteSelectedUsers() {
         try {
-            appUserServiceJPQL.removeList(this.selectedUsers);
-
-            // TODO
-            // Ao remover a lista selectedUsers da lista users a tabela fica em branco, verificar isso.
-            this.users.removeAll(this.selectedUsers);
-            this.selectedUsers = null;
+            appUserServiceJPQL.removeList(selectedUsers);
+            users = appUserServiceJPQL.findAll();
+            selectedUsers = null;
 
             MessagesFactory.addInfoMessage("Users Removed");
             PrimeFaces.current().ajax().update("form:messages", "form:dt-users");
-            PrimeFaces.current().executeScript("PF('dtUsers').clearFilters()");
         } catch (ServiceException e) {
             e.printStackTrace();
 
@@ -110,12 +103,12 @@ public class UsersController implements Serializable {
     }
 
     public boolean hasSelectedUsers() {
-        return this.selectedUsers != null && !this.selectedUsers.isEmpty();
+        return selectedUsers != null && !selectedUsers.isEmpty();
     }
 
     public String getDeleteButtonMessage() {
         if (hasSelectedUsers()) {
-            int size = this.selectedUsers.size();
+            int size = selectedUsers.size();
             return size > 1 ? size + " users selected" : "1 user selected";
         }
 
