@@ -21,11 +21,9 @@ public abstract class DefaultEntity {
     @GeneratedValue(strategy = IDENTITY)
     protected Long id;
 
-    @Temporal(TIMESTAMP)
     @Column(name = "created_at", updatable = false)
     protected LocalDateTime createdAt;
 
-    @Temporal(TIMESTAMP)
     @Column(name = "updated_at", insertable = false)
     protected LocalDateTime updatedAt;
 

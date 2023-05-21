@@ -101,14 +101,7 @@ public class UsersController implements Serializable {
 
             MessagesFactory.addErrorMessage("Users could not be removed.");
         }
-    }
-
-    public void searchUsers() {
-        String searchQuery = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("value");
-        users = appUserServiceJPQL.findAllByName(searchQuery);
-
-        PrimeFaces.current().ajax().update("form:dt-users");
-    }
+    }   
 
     public boolean hasSelectedUsers() {
         return selectedUsers != null && !selectedUsers.isEmpty();

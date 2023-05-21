@@ -54,7 +54,7 @@ public class AppUserRepositoryJPQL extends DefaultRepository<AppUser> {
     }
 
     public List<AppUser> findAllByName(String name) {
-        jpql = "SELECT ap FROM AppUser ap WHERE UPPER(ap.name) like UPPER(CONCAT('%', :name, '%'))";
+        jpql = "SELECT ap FROM AppUser ap WHERE UPPER(ap.name) LIKE UPPER(CONCAT('%', :name, '%'))";
 
         query = entityManager.createQuery(jpql, AppUser.class);
         query.setParameter("name", name);
