@@ -3,7 +3,9 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/layouts/application.xhtml">
+                template="/WEB-INF/layouts/public_layout.xhtml">
+
+    <ui:define name="title">Sign In</ui:define>
 
     <ui:define name="stylesheets">
         <style>
@@ -18,25 +20,15 @@
 
     <ui:define name="content">
         <p:card style=" width: 25em " styleClass="shadow-7 py-8 px-4 bg-blue-700 text-white">
-            <h2 class="mb-5 text-center">Sign Up</h2>
+            <h2 class="mb-5 text-center">Sign In</h2>
 
             <h:form id="appuser_form" styleClass="formgrid grid">
                 <p:growl id="growl" showDetail="true"/>
 
                 <div class="field col-12 mt-2">
-                    <p:outputLabel for="name" styleClass="block" value="Name:"/>
-                    <p:inputText id="name"
-                                 value="#{newUserController.appUser.name}"
-                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
-                                 surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <f:passThroughAttribute name="placeholder" value="Inform your full name"/>
-                    </p:inputText>
-                </div>
-
-                <div class="field col-12 mt-2">
                     <p:outputLabel for="email" styleClass="block" value="E-mail:"/>
                     <p:inputText id="email"
-                                 value="#{newUserController.appUser.email}"
+                                 value="#{signInUserController.appUser.email}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                  surface-border border-round appearance-none outline-none focus:border-primary w-full">
                         <f:passThroughAttribute name="placeholder" value="example@email.com"/>
@@ -46,7 +38,7 @@
                 <div class="field col-12 mt-2">
                     <p:outputLabel for="password" styleClass="block" value="Password:"/>
                     <p:password id="password"
-                                value="#{newUserController.appUser.password}"
+                                value="#{signInUserController.appUser.password}"
                                 feedback="true"
                                 inline="true"
                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
@@ -57,7 +49,7 @@
                     <p:commandButton value="Submit" icon="pi pi-check"
                                      styleClass="col ui-button-raised ui-button-success"
                                      process="@form" update="@form"
-                                     action="#{newUserController.save()}"/>
+                                     action="#{signInUserController.access()}"/>
                     <p:commandButton type="reset" value="Cancel"
                                      styleClass="col ui-button-raised ui-button-danger"/>
                 </div>
@@ -66,6 +58,5 @@
     </ui:define>
 
     <ui:define name="scripts">
-
     </ui:define>
 </ui:composition>

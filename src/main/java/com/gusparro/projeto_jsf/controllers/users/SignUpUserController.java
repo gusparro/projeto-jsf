@@ -9,7 +9,7 @@ import jakarta.inject.Inject;
 import java.io.Serializable;
 
 @Model
-public class NewUserController implements Serializable {
+public class SignUpUserController implements Serializable {
 
     @Inject
     private AppUserServiceJPQL appUserServiceJPQL;
