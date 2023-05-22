@@ -22,13 +22,13 @@
         <p:card style=" width: 25em " styleClass="shadow-7 py-8 px-4 bg-blue-700 text-white">
             <h2 class="mb-5 text-center">Sign In</h2>
 
-            <h:form id="appuser_form" styleClass="formgrid grid">
-                <p:growl id="growl" showDetail="true"/>
+            <h:form id="signIn_form" styleClass="formgrid grid">
+                <p:growl id="messages" showDetail="true"/>
 
                 <div class="field col-12 mt-2">
                     <p:outputLabel for="email" styleClass="block" value="E-mail:"/>
                     <p:inputText id="email"
-                                 value="#{signInUserController.appUser.email}"
+                                 value="#{signInUserController.signInDTO.email}"
                                  styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                  surface-border border-round appearance-none outline-none focus:border-primary w-full">
                         <f:passThroughAttribute name="placeholder" value="example@email.com"/>
@@ -38,8 +38,7 @@
                 <div class="field col-12 mt-2">
                     <p:outputLabel for="password" styleClass="block" value="Password:"/>
                     <p:password id="password"
-                                value="#{signInUserController.appUser.password}"
-                                feedback="true"
+                                value="#{signInUserController.signInDTO.password}"
                                 inline="true"
                                 styleClass="text-base text-color surface-overlay p-2 border-1 border-solid
                                 surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
@@ -50,8 +49,6 @@
                                      styleClass="col ui-button-raised ui-button-success"
                                      process="@form" update="@form"
                                      action="#{signInUserController.access()}"/>
-                    <p:commandButton type="reset" value="Cancel"
-                                     styleClass="col ui-button-raised ui-button-danger"/>
                 </div>
             </h:form>
         </p:card>
